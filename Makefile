@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-all: gosumc
+all: gosumc run
 
 gosumc: go.c libgosum.so
 	gcc -Wall -o $@ $?
@@ -10,3 +10,6 @@ libgosum.so: sum.go
 
 clean:
 	rm -rf gosumc libgosum.h libgosum.so
+
+run:
+	LD_LIBRARY_PATH=. ./gosumc
